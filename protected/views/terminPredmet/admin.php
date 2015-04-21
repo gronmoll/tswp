@@ -26,6 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
+
 <h1>Správa rozvrhových jednotiek</h1>
 
 <p>
