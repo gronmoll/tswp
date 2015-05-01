@@ -26,18 +26,19 @@ class UserPredmetController extends Controller
 	 */
 	public function accessRules()
 	{
+		$user = User::model()->findByAttributes(array('email'=>Yii::app()->user->name)); 
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'expression'=>'$user->type==="student" || $user->type==="ucitel" || $user->type==="admin"',
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'actions'=>array('create','update', 'delete'),
+				'expression'=>'$user->type==="student" || $user->type==="ucitel" || $user->type==="admin"',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'expression'=>'$user->type==="student" || $user->type==="ucitel" || $user->type==="admin"',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -108,12 +109,41 @@ class UserPredmetController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+
+		$idUser = Yii::app()->user->getId();
+		$idPredmet = $_GET['idPredmet'];
+
+		/*$criteria = new CDbCriteria();
+		$criteria->select = 'id';
+		$criteria->condition = "id_user = ".$idUser;
+		$criteria->condition = "id_predmet = ".$idPredmet;
+		$model = UserPredmet::model()->findAll($criteria);
+*/
+		
+		$model = UserPredmet::model()->findByAttributes(
+		    array('id_user'=>$idUser,'id_predmet'=>$idPredmet)
+		);
+
+
+		//UserPredmet::model()->deleteAll("id_user = '".$idUser."' and id_predmet = '".$idPredmet."'");
+
+		//$query = "delete from `user_predmet` where `id_user`='".$idUser."' and `id_predmet`='".$idPredmet."'";
+        //$query->queryAll($query);
+
+		//echo 'IDDDD:'.$model->id;
+/*
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+		$this->render('../predmet/index',array(
+			'model'=>$model, 'isVisible'=>false
+		));
+		*/
+		$this->loadModel($model->id)->delete();
+
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			$this->redirect(array('predmet/index', 'isVisible'=>false, 'isPredmetVisible'=>true));
+		}
 
 	/**
 	 * Lists all models.

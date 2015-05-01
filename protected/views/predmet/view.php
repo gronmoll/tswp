@@ -15,7 +15,7 @@ if(isset(Yii::app()->user->type)){
 }
 		
 $this->menu=array(
-	array('label'=>'Zobraziť predmety', 'url'=>array('index', 'isVisible'=> false)),
+	array('label'=>'Zoznam predmetov', 'url'=>array('index', 'isVisible'=> false)),
 	array('label'=>'Vytvoriť predmet', 'url'=>array('create'), 'visible' => $isAdmin),
 	array('label'=>'Editovať predmet', 'url'=>array('update', 'id'=>$model->id), 'visible' => $isAdmin),
 	array('label'=>'Vymazať predmet', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?'), 'visible' => $isAdmin),

@@ -46,25 +46,25 @@
 	<?php } ?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>60)); ?>
+		<?php echo $form->textField($model,'email',array('size'=>45,'maxlength'=>60)); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pass'); ?>
-		<?php echo $form->passwordField($model,'pass',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->passwordField($model,'pass',array('size'=>45,'maxlength'=>64)); ?>
 		<?php echo $form->error($model,'pass'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fakulta'); ?>
-		<?php echo $form->textField($model,'fakulta',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'fakulta',array('size'=>45,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'fakulta'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'odbor'); ?>
-		<?php echo $form->textField($model,'odbor',array('size'=>60,'maxlength'=>60)); ?>
+		<?php echo $form->textField($model,'odbor',array('size'=>45,'maxlength'=>60)); ?>
 		<?php echo $form->error($model,'odbor'); ?>
 	</div>
 

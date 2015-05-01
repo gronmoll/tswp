@@ -12,11 +12,6 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id',array('size'=>10,'maxlength'=>10)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'titul'); ?>
 		<?php echo $form->textField($model,'titul',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
@@ -33,22 +28,17 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>60)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'pass'); ?>
-		<?php echo $form->passwordField($model,'pass',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->textField($model,'email',array('size'=>45,'maxlength'=>60)); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'fakulta'); ?>
-		<?php echo $form->textField($model,'fakulta',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'fakulta',array('size'=>45,'maxlength'=>100)); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'odbor'); ?>
-		<?php echo $form->textField($model,'odbor',array('size'=>60,'maxlength'=>60)); ?>
+		<?php echo $form->textField($model,'odbor',array('size'=>45,'maxlength'=>60)); ?>
 	</div>
 
 	<div class="row">

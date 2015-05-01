@@ -96,13 +96,24 @@ class UserSkuska extends CActiveRecord
 	}
 
 	protected function beforeSave() {
-	/*$checkModel = new UserSkuska;
+	$checkModel = new UserSkuska;
 	$checkModel = UserPredmet::model()->findByAttributes(array('id_user'=>$this->id_user,'id_predmet'=>$this->id_predmet));
 
 	if($checkModel != null){
 		$this->addError('id_user','Termín je plný.');
 	}
-	*/
+	
+
+	//array('label'=>'Delete Predmet', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?'), 'visible' => $isAdmin),
+
 	return parent::beforeSave();
 	}
+
+	protected function beforeValidate(){
+        if(!empty($this->description) && substr_count($this->description, '"') % 2 !== 0) {
+            $this->addError("description", "Odd number of quotes");
+            // return false; // stop validation
+        }
+        return parent::beforeValidate();
+    }
 }

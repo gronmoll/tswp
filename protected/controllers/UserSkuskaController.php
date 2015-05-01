@@ -79,7 +79,7 @@ class UserSkuskaController extends Controller
 				
 			}	
 		} else {
-			Yii::app()->user->setFlash('success', "Termín je obsadený!");
+			$this->redirect(array('skuska/error', 'isVisible'=>false),array('confirm'=>'Success!'));
 		}
 
 		$this->render('../skuska/index',array(

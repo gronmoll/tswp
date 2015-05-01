@@ -100,7 +100,6 @@ class User extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
 		$criteria->compare('titul',$this->titul,true);
 		$criteria->compare('meno',$this->meno,true);
 		$criteria->compare('priezvisko',$this->priezvisko,true);

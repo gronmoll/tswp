@@ -41,7 +41,7 @@
 				array('label'=>'Používatelia', 'url'=>array('/user/index'), 'visible'=>$isAdmin),
 				//array('label'=>'Štúdium', 'url'=>array('/site/page', 'view'=>'about'), 'visible'=>!Yii::app()->user->isGuest),
 				//array('label'=>'Zápis', 'url'=>array(''), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Predmety', 'url'=>array('/predmet/index', 'isVisible'=> false), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Predmety', 'url'=>array('/predmet/index', 'isVisible'=> false, 'isPredmetVisible'=>true), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Termíny', 'url'=>array('/skuska/index', 'isVisible'=> false), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Rozvrh', 'url'=>array('/terminPredmet/index', 'isVisible'=> false), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Login', 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),

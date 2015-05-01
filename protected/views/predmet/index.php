@@ -17,7 +17,7 @@ if($user->type === "admin"){
 ?>
 
 <h1>Zapísané predmety</h1>
-<h2><?php echo CHtml::link('Zobratiť všetky predmety', array('predmet/viewPredmety', 'isVisible' => true)); ?></h2>
+<h2><?php echo CHtml::link('Zobratiť všetky predmety', array('predmet/viewPredmety', 'isVisible' => true, 'isPredmetVisible'=>false)); ?></h2>
 
 <?php
 	

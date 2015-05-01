@@ -28,7 +28,7 @@ class SkuskaController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','viewSkusky'),
+				'actions'=>array('index','view','viewSkusky','error'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -174,6 +174,15 @@ class SkuskaController extends Controller
 	public function actionViewSkusky(){
 		$dataProvider=new CActiveDataProvider('Skuska');
 		$this->render('viewSkusky',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+
+
+	public function actionError()
+	{
+		$dataProvider=new CActiveDataProvider('UserSkuska');
+		$this->render('error',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}
