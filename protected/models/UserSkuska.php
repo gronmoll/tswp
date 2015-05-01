@@ -97,7 +97,7 @@ class UserSkuska extends CActiveRecord
 
 	protected function beforeSave() {
 	$checkModel = new UserSkuska;
-	$checkModel = UserPredmet::model()->findByAttributes(array('id_user'=>$this->id_user,'id_predmet'=>$this->id_predmet));
+	$checkModel = UserSkuska::model()->findByAttributes(array('id_user'=>$this->id_user,'id_skuska'=>$this->id_skuska));
 
 	if($checkModel != null){
 		$this->addError('id_user','Termín je plný.');

@@ -18,8 +18,13 @@ if($user->type === "admin" || $user->type === "ucitel"){
 <h1>Všetky rozvrhové jednotky</h1>
 
 <?php 
+	$dp=new CActiveDataProvider('TerminPredmet', array(
+            'criteria'=>array(
+            	'condition'=>'id not in (SELECT up.id_termin_predmet FROM user_rozvrh up WHERE up.id_user = '.Yii::app()->user->getId().')',
+            )));
+
 	$this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
+	'dataProvider'=>$dp,
 	'itemView'=>'_view',
 	));
 ?>

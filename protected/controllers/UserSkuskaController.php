@@ -29,11 +29,11 @@ class UserSkuskaController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'expression'=>'$user->type==="student" || $user->type==="ucitel" || $user->type==="admin"',
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'actions'=>array('create','update', 'delete'),
+				'expression'=>'$user->type==="student" || $user->type==="ucitel" || $user->type==="admin"',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
@@ -75,15 +75,15 @@ class UserSkuskaController extends Controller
 
 		if($count < $kapacita){
 			if($model->save(false)){    			
-				$this->redirect(array('skuska/index', 'isVisible'=>false),array('confirm'=>'Success!'));
+				$this->redirect(array('skuska/index', 'isVisible'=>false, 'isSkuskaVisible'=>true),array('confirm'=>'Success!'));
 				
 			}	
 		} else {
-			$this->redirect(array('skuska/error', 'isVisible'=>false),array('confirm'=>'Success!'));
+			$this->redirect(array('skuska/error', 'isVisible'=>false, 'isSkuskaVisible'=>true),array('confirm'=>'Success!'));
 		}
 
 		$this->render('../skuska/index',array(
-			'model'=>$model, 'isVisible'=>false
+			'model'=>$model, 'isVisible'=>false, 'isSkuskaVisible'=>true
 		));
 	}
 
@@ -118,11 +118,17 @@ class UserSkuskaController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$idUser = Yii::app()->user->getId();
+		$idSkuska = $_GET['idSkuska'];
+		$model = UserSkuska::model()->findByAttributes(
+		    array('id_user'=>$idUser,'id_skuska'=>$idSkuska)
+		);
+
+		$this->loadModel($model->id)->delete();
+
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			$this->redirect(array('skuska/index', 'isVisible'=>false, 'isSkuskaVisible'=>true));
 	}
 
 	/**

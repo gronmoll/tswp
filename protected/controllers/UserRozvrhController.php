@@ -29,10 +29,10 @@ class UserRozvrhController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'expression'=>'$user->type==="student" || $user->type==="ucitel" || $user->type==="admin"',
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'delete'),
 				'expression'=>'$user->type==="student" || $user->type==="ucitel" || $user->type==="admin"',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -93,7 +93,7 @@ class UserRozvrhController extends Controller
 
 		if($count < $kapacita){
 			if($model->save(false)){    			
-				$this->redirect(array('terminPredmet/index', 'isVisible'=>false));
+				$this->redirect(array('terminPredmet/index', 'isVisible'=>false, 'isTerminPredmetVisible'=>true));
 				Yii::app()->user->setFlash('commentSubmitted','Thank you for your comment.');
 			}	
 		} else {
@@ -101,7 +101,7 @@ class UserRozvrhController extends Controller
 		}
 
 		$this->render('../termin_predmet/index',array(
-			'model'=>$model, 'isVisible'=>false
+			'model'=>$model, 'isVisible'=>false, 'isTerminPredmetVisible'=>true
 		));
 	}
 
@@ -136,11 +136,17 @@ class UserRozvrhController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		
+		$idUser = Yii::app()->user->getId();
+		$idTerminPredmet = $_GET['idTerminPredmet'];
+		$model = TerminPredmet::model()->findByAttributes(
+		    array('id_user'=>$idUser,'id_termin_predmet'=>$idTerminPredmet)
+		);
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$this->loadModel($model->id)->delete();
+
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			$this->redirect(array('terminPredmet/index', 'isVisible'=>false, 'isTerminPredmetVisible'=>true));
 	}
 
 	/**

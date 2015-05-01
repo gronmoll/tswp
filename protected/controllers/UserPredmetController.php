@@ -71,10 +71,10 @@ class UserPredmetController extends Controller
 		$model->id_predmet = $_GET['idPredmet'];
 
 			if($model->save(false))
-				$this->redirect(array('predmet/index', 'isVisible'=>false));
+				$this->redirect(array('predmet/index', 'isVisible'=>false, 'isPredmetVisible'=>true));
 		
 		$this->render('../predmet/index',array(
-			'model'=>$model, 'isVisible'=>false
+			'model'=>$model, 'isVisible'=>false, 'isPredmetVisible'=>true
 		));
 	}
 

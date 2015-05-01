@@ -42,8 +42,8 @@
 				//array('label'=>'Štúdium', 'url'=>array('/site/page', 'view'=>'about'), 'visible'=>!Yii::app()->user->isGuest),
 				//array('label'=>'Zápis', 'url'=>array(''), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Predmety', 'url'=>array('/predmet/index', 'isVisible'=> false, 'isPredmetVisible'=>true), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Termíny', 'url'=>array('/skuska/index', 'isVisible'=> false), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Rozvrh', 'url'=>array('/terminPredmet/index', 'isVisible'=> false), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Termíny', 'url'=>array('/skuska/index', 'isVisible'=> false, 'isSkuskaVisible'=>true), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Rozvrh', 'url'=>array('/terminPredmet/index', 'isVisible'=> false, 'isTerminPredmetVisible'=>true), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Login', 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Registrácia', 'url'=>array('/user/register'), 'visible'=>Yii::app()->user->isGuest)
