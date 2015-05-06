@@ -2,12 +2,12 @@
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
-
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Akademický IS',
+	'name'=>'ŠtudentIS',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -26,12 +26,17 @@ return array(
 			'password'=>'password',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
+            'generatorPaths' => array('bootstrap.gii'),
 		),
 		
 	),
 
 	// application components
 	'components'=>array(
+
+        'bootstrap' => array(
+            'class' => 'bootstrap.components.Bootstrap',
+        ),
 
 		'user'=>array(
 			// enable cookie-based authentication
@@ -66,11 +71,11 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-				
+				/*
 				array(
 					'class'=>'CWebLogRoute',
 				),
-				
+				*/
 			),
 		),
 

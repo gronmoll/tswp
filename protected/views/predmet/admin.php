@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Zoznam predmetov', 'url'=>array('index', 'isVisible'=> false)),
+	array('label'=>'Zoznam predmetov', 'url'=>array('index', 'isVisible'=> false, 'isPredmetVisible'=>true)),
 	array('label'=>'Vytvoriť predmet', 'url'=>array('create')),
 );
 

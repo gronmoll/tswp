@@ -16,7 +16,7 @@ if($user->type === "admin" || $user->type === "ucitel"){
 ?>
 
 <h1>Rozvrh</h1>
-<h2><?php echo CHtml::link('Zobratiť všetky rozvrhové jednotky', array('terminPredmet/viewTerminyPredmety', 'isVisible' => true, 'isTerminPredmetVisible'=>false)); ?></h2>
+<h4><?php echo CHtml::link('Zobraziť všetky rozvrhové jednotky', array('terminPredmet/viewTerminyPredmety', 'isVisible' => true, 'isTerminPredmetVisible'=>false), array('class'=>'lic')); ?></h4>
 
 <?php
 

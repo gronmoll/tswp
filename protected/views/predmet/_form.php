@@ -38,7 +38,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvoriť' : 'Uložiť', array('class'=>'btn btn-info')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

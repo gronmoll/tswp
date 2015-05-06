@@ -16,17 +16,21 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <!-- Tento riadok zapne bootstrap cssko, avsak bez temy-->
+    <?php Yii::app()->bootstrap->registerAllCss(); ?>
 </head>
 
 <body>
 
 <div class="container" id="page">
 
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
+    <!--
+    <div id="header">
+        <div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+    </div><!-- header -->
 
-	<div id="mainmenu">
+
+	<div id="mainmenu" class="navbar navbar default">
 		<?php
 			$isAdmin = false;
 			if(isset(Yii::app()->user->type)){
@@ -61,7 +65,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		
+        ©StudentIS 2015
 	</div><!-- footer -->
 
 </div><!-- page -->

@@ -227,3 +227,56 @@ div.search-form
 {
 	background: #80CFFF;
 }
+
+.row2
+{
+
+}
+
+.nadpis
+{
+ margin-left: 450px;
+}
+
+.nadpis2
+{
+    margin-left: 350px;
+    color: #ffffff;
+    margin-top: 50px;
+}
+
+.lic:hover
+{
+ text-decoration: none;
+
+}
+
+.obal
+{
+    margin-left: -20px;
+    margin-top: -40px;
+    margin-right: -20px;
+    min-width: 900px;
+    min-height: 550px;
+ background-image: url("students.jpg");
+ background-size: 100% 100%;
+}
+
+.obal2
+{
+    margin-left: -20px;
+    margin-top: -60px;
+    margin-right: -20px;
+    margin-bottom: -28px;
+    min-width: 900px;
+    min-height: 400px;
+
+background-color: #519cc6;
+}
+
+.tblq
+{
+    margin-left: 350px;
+    margin-bottom: -50px;
+    margin-top: -450px;
+}

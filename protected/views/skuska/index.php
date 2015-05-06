@@ -16,7 +16,7 @@ if($user->type === "admin" || $user->type === "ucitel"){
 ?>
 
 <h1>Zapísané termíny</h1>
-<h2><?php echo CHtml::link('Zobratiť všetky termíny', array('skuska/viewSkusky', 'isVisible' => true, 'isSkuskaVisible'=> false)); ?></h2>
+<h4><?php echo CHtml::link('Zobraziť všetky termíny', array('skuska/viewSkusky', 'isVisible' => true, 'isSkuskaVisible'=> false), array('class'=>'lic')); ?></h4>
 
 <?php
 

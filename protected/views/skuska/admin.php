@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Zobraziť termíny', 'url'=>array('index', 'isVisible'=> false)),
+	array('label'=>'Zobraziť termíny', 'url'=>array('index', 'isVisible'=> false, 'isSkuskaVisible'=>true)),
 	array('label'=>'Vytvoriť termín', 'url'=>array('create')),
 );
 
